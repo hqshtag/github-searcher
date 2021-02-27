@@ -1,9 +1,109 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
+
+
+
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="public/GitHub_Logo.png" alt="Logo" width="280" height="200">
+  </a>
+
+  <h1 align="center">Github Searcher</h1>
+
+  <p align="center">
+   A simple GitHub repository search application.
+    <br />
+   
+   
+</p>
+
+
+
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#technologies">Technologies</a></li>
+        <li><a href="#app-structure">App structure</li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#available-scripts">Available Scripts</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+This project was developed as a technical solution for a test by [tradeling](https://www.tradeling.com/). That allows the users to search the users or repositories or issues on GitHub. The results will be fetched from the [GitHub API](https://developer.github.com/v3/search/).
+
+
+### Technologies
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) With [TypeScript](https://sass-lang.com/).
+
+- [Redux](https://redux.js.org/recipes/usage-with-typescript) & [redux-persist](https://github.com/rt2zz/redux-persist).
+- [React Router](https://github.com/ReactTraining/react-router).
+- [SaSS](https://sass-lang.com/).
+
+### App Structure
+```
+/src
+  ├── /app
+  |      ├── App.tsx
+  |      ├── AppRouter.tsx
+  |      ├── store.ts
+  |      └── styles.css
+  ├── /components
+  |      ├── /buttons
+  |      |      └── Button.tsx
+  |      ├── /cards
+  |      |      ├── IssueCard.tsx
+  |      |      ├── RepoCard.tsx
+  |      |      └── UserCard.tsx
+  |      └── /inputs
+  |              ├── Input.tsx
+  |              └── Dropdown.tsx
+  ├── /features   
+  |      └── /search
+  |              ├── actions.ts
+  |              ├── types.ts
+  |              ├── services.ts
+  |              └── reducer.ts
+  └── /pages
+        ├── /forms
+        |      └── SearchForm.tsx
+        └── SearchPage.tsx
+```
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+- You will need `yarn` or `npm`
+- Run `yarn install` or `npm install`
+
+### Available Scripts
 In the project directory, you can run:
 
 ### `yarn start`
@@ -39,8 +139,62 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- USAGE EXAMPLES -->
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The UI is simple, you chose whether you are looking for repositories, users or issues, type in your search text and voila!
+
+
+
+<!-- ROADMAP -->
+## Features Roadmap:
+- [x] Routing with React-Router
+- [ ] User Identity
+  - [ ] External providers (Google, Github, Bitbucket)
+  - [ ] Registration / Authentication
+- [x] Cross-cutting Application Services
+  - [x] Local Storage
+  - [x] Client Logger
+  - [x] Toasts
+  - [ ] Analytics
+- [x] Feature Folders
+  - [x] `/articles` - Articles listing with CRUD Operations
+  - [ ] `/realtime-monitoring` - Realtime monitoring of connected users using Websockets
+- [x] REST API Integration (API Client)
+- [ ] WebSockets Integration
+- [ ] Serverless Lambda Functions (Netlify Functions)
+- [ ] Utilities (HOC, Hooks, Media Queries...)
+- [ ] Typesafe Styling/Theming with CSSinJS (`Emotion`)
+- [ ] ...
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Your Name - Wajih Tagourty - wajih.tagourty@gmail.com
+
+Project Link: [https://github.com/hqshtag/github-searcher](https://github.com/hqshtag/week-spenx)
+
+
