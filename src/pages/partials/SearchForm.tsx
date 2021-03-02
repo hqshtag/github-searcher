@@ -1,32 +1,35 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Input } from "../../components/inputs/Input";
 import { Select } from "../../components/inputs/Select";
-import { clearResults, thunkSearch } from "../../features/search/actions";
+import { clearResults, setSearchType, thunkSearch } from "../../features/search/actions";
 import { SearchTypes } from "../../features/search/types";
 import { debounce } from 'lodash';
+import { RootState } from "../../features/reducer";
 
 
 export const SearchForm: React.FC = () => {
+  const defaultSearchType = useSelector((state: RootState) => state.search.type);
+
   const [searchText, setSearchText] = useState('');
-  const [searchType, setSearchType] = useState(SearchTypes.users);
+  const [type, setType] = useState(defaultSearchType);
 
   const dispatch = useDispatch();
   const searchGithub = () => {
     if (searchText.length >= 3) {
-      dispatch(thunkSearch({ text: searchText, type: searchType }))
+      dispatch(thunkSearch({ text: searchText, type }))
     } else {
       dispatch(clearResults);
     }
   }
-  const debouncedSearch = useCallback(debounce(searchGithub, 500), [searchText, searchType]);
+  const debouncedSearch = useCallback(debounce(searchGithub, 500), [searchText, type]);
 
   useEffect(() => {
     debouncedSearch();
 
     // Cancel the debounce on useEffect cleanup.
     return debouncedSearch.cancel;
-  }, [searchText, searchType, debouncedSearch])
+  }, [searchText, type, debouncedSearch])
 
 
 
@@ -47,7 +50,10 @@ export const SearchForm: React.FC = () => {
       */
       let typeValue = Object.values(SearchTypes).filter(e => e === value)[0];
       //typeValue is of type SearchTypes :)
-      setSearchType(typeValue);
+      setType(typeValue);
+      //update our type in the store
+      dispatch(setSearchType(typeValue));
+
     } 
 
   }

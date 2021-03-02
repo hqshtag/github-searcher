@@ -13,6 +13,7 @@ export enum SearchTypes {
 
 
 export interface SearchState {
+  type: SearchTypes
   loading: Boolean
   result: [GithubResponseObjectItemsType] | undefined
   errors: []
@@ -29,6 +30,9 @@ export const SEARCH_FAILURE = "SEARCH_FAILURE"
 
 export const CLEAR_RESULTS = "CLEAR_RESULTS"
 
+
+export const SET_SEARCH_TYPE = "SET_SEARCH_TYPE"
+
 interface SearchAction {
   type: typeof SEARCH,
 }
@@ -44,9 +48,14 @@ interface SearchFailureAction {
   type: typeof SEARCH_FAILURE
 }
 
+interface SetSearchTypeAction {
+  type: typeof SET_SEARCH_TYPE
+  payload: SearchTypes
+}
+
 interface ClearSearchResultAction {
   type: typeof CLEAR_RESULTS
 }
 
 
-export type SearchActionTypes = SearchAction | SearchSuccessAction | SearchFailureAction | ClearSearchResultAction;
+export type SearchActionTypes = SearchAction | SearchSuccessAction | SearchFailureAction | SetSearchTypeAction | ClearSearchResultAction;

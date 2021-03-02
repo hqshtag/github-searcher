@@ -1,6 +1,6 @@
 import { SearchGithubAPI } from "../../api/GithubServices";
 import { GithubResponseObject, ReachedOurRateLimit } from "../../api/GithubTypes";
-import { CLEAR_RESULTS, SEARCH, SearchActionTypes, SearchState, SearchTDO, SEARCH_FAILURE, SEARCH_SUCCESS } from "./types";
+import { CLEAR_RESULTS, SEARCH, SearchActionTypes, SearchState, SearchTDO, SearchTypes, SEARCH_FAILURE, SEARCH_SUCCESS, SET_SEARCH_TYPE } from "./types";
 import { ThunkAction } from 'redux-thunk'
 
 
@@ -11,6 +11,13 @@ export const searchInit = (): SearchActionTypes => {
     type: SEARCH
   }
 }
+
+export const setSearchType = (type: SearchTypes): SearchActionTypes => {
+  return {
+    type: SET_SEARCH_TYPE,
+    payload: type
+  }
+} 
 
 
 
