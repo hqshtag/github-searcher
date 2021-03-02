@@ -68,30 +68,32 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### App Structure
 ```
 /src
+  ├── /api
+  |      ├── GithubServices.ts
+  |      ├── GithubTypes.ts
   ├── /app
   |      ├── App.tsx
   |      ├── AppRouter.tsx
   |      ├── store.ts
   |      └── styles.css
   ├── /components
-  |      ├── /buttons
-  |      |      └── Button.tsx
   |      ├── /cards
   |      |      ├── IssueCard.tsx
   |      |      ├── RepoCard.tsx
   |      |      └── UserCard.tsx
   |      └── /inputs
   |              ├── Input.tsx
-  |              └── Dropdown.tsx
+  |              └── Select.tsx
   ├── /features   
-  |      └── /search
-  |              ├── actions.ts
-  |              ├── types.ts
-  |              ├── services.ts
-  |              └── reducer.ts
+  |      ├─ /search
+  |      |        ├── actions.ts
+  |      |        ├── types.ts
+  |      |        └── reducer.ts
+  |      └──rootReducer.ts
   └── /pages
-        ├── /forms
-        |      └── SearchForm.tsx
+        ├── /partials
+        |       ├── SearchForm.tsx
+        |       └── SearchResults.tsx
         └── SearchPage.tsx
 ```
 
