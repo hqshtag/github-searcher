@@ -1,18 +1,9 @@
 import axios from "axios";
+import { SearchTDO } from "../features/search/types";
+import { Github403, GithubResponseObject } from "./GithubTypes";
 
 
-export const getUsers = async (text: string) => {
-  return await axios.get(`https://api.github.com/search/users?q=${text}`);
+export const SearchGithubAPI = async (data: SearchTDO): Promise<GithubResponseObject | Github403> => {
+  return await axios.get(`https://api.github.com/search/${data.type}?q=${data.text}`)
 }
-
-
-export const getRepos = async (text: string) => {
-  return await axios.get(`https://api.github.com/search/repositories?q=${text}`);
-}
-
-export const getIssues = async (text: string) => {
-  return await axios.get(`https://api.github.com/search/issues?q=${text}`);
-}
-
-
 

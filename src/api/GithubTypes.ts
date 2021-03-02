@@ -5,6 +5,11 @@ export interface GithubResponseObject {
   items: [GithubResponseObjectItemsType]
 }
 
+export interface Github403 {
+  message: string,
+  documentation_url: string
+}
+
 interface GithubUser {
   login: string
   id: number
@@ -142,3 +147,12 @@ interface GithubIssue {
 
 
 export type GithubResponseObjectItemsType = GithubIssue | GithubRepo | GithubUser;
+
+
+//This is a type guard/check for github response
+export const ReachedOurRateLimit = (toBeDetermined: Github403 | GithubResponseObject): toBeDetermined is Github403 => {
+  if ((toBeDetermined as Github403).message) {
+    return true
+  }
+  return false
+}
