@@ -22,7 +22,10 @@ export const SearchForm: React.FC = () => {
       dispatch(clearResults);
     }
   }
-  const debouncedSearch = useCallback(debounce(searchGithub, 500), [searchText, type]);
+
+  //Since I'm using some external function, I can simply ignore the waring message
+  const debouncedSearch = useCallback(debounce(searchGithub, 500), [searchText, type]);  // eslint-disable-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
     debouncedSearch();
