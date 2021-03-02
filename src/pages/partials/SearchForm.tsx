@@ -8,6 +8,13 @@ import { debounce } from 'lodash';
 import { RootState } from "../../features/rootReducer";
 
 
+/* interface SearchFormProps {
+  searchText: string
+  searchType: SearchTypes
+  handleTextChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
+} */
+
 export const SearchForm: React.FC = () => {
   const defaultSearchType = useSelector((state: RootState) => state.search.type);
 
@@ -19,7 +26,7 @@ export const SearchForm: React.FC = () => {
     if (searchText.length >= 3) {
       dispatch(thunkSearch({ text: searchText, type }))
     } else {
-      dispatch(clearResults);
+      dispatch(clearResults());
     }
   }
 
