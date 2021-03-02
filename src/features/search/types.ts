@@ -15,8 +15,8 @@ export enum SearchTypes {
 export interface SearchState {
   type: SearchTypes
   loading: Boolean
-  result: [GithubItemsType] | undefined
-  errors: []
+  result?: [GithubItemsType]
+  errors?: []
 }
 
 
