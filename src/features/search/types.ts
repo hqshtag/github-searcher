@@ -1,4 +1,4 @@
-import { GithubResponseObject, GithubResponseObjectItemsType } from "../../api/GithubTypes";
+import { GithubResponseObject, GithubItemsType } from "../../api/GithubTypes";
 
 export interface SearchTDO {
   text: string
@@ -15,7 +15,7 @@ export enum SearchTypes {
 export interface SearchState {
   type: SearchTypes
   loading: Boolean
-  result: [GithubResponseObjectItemsType] | undefined
+  result: [GithubItemsType] | undefined
   errors: []
 }
 
