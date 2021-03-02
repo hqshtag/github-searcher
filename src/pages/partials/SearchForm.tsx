@@ -1,24 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Input } from "../../components/inputs/Input";
 import { Select } from "../../components/inputs/Select";
 import { clearResults, thunkSearch } from "../../features/search/actions";
 import { SearchTypes } from "../../features/search/types";
+import { debounce } from 'lodash';
 
-interface SearchFormProps { }
 
-export const SearchForm: React.FC<SearchFormProps> = ({ }) => {
+export const SearchForm: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const [searchType, setSearchType] = useState(SearchTypes.users);
 
   const dispatch = useDispatch();
-  useEffect(() => {
+  const searchGithub = () => {
     if (searchText.length >= 3) {
       dispatch(thunkSearch({ text: searchText, type: searchType }))
     } else {
       dispatch(clearResults);
     }
-  }, [searchText, searchType])
+  }
+  const debouncedSearch = useCallback(debounce(searchGithub, 500), [searchText, searchType]);
+
+  useEffect(() => {
+    debouncedSearch();
+
+    // Cancel the debounce on useEffect cleanup.
+    return debouncedSearch.cancel;
+  }, [searchText, searchType, debouncedSearch])
+
+
+
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let value = e.target.value;
