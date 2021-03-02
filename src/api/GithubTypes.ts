@@ -2,7 +2,7 @@
 export interface GithubResponseObject {
   total_count: number
   incomplete_results: Boolean
-  items: [GithubResponseObjectItemsType]
+  items: [GithubItemsType]
 }
 
 export interface GithubErrorResponse {
@@ -146,7 +146,7 @@ export interface GithubIssue {
 }
 
 
-export type GithubResponseObjectItemsType = GithubIssue | GithubRepo | GithubUser;
+export type GithubItemsType = GithubIssue | GithubRepo | GithubUser;
 
 
 //This is a type guard/check for github response
