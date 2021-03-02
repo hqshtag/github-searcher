@@ -1,4 +1,4 @@
-import { GithubResponseObject } from "../../api/GithubTypes";
+import { GithubResponseObject, GithubResponseObjectItemsType } from "../../api/GithubTypes";
 
 export interface SearchTDO {
   text: string
@@ -6,15 +6,15 @@ export interface SearchTDO {
 }
 
 export enum SearchTypes {
-  "users",
-  "repos",
-  "issues"
+  users = "users",
+  repositories = "repositories",
+  issues = "issues"
 }
 
+
 export interface SearchState {
-  text: string
-  type: SearchTypes
   loading: Boolean
+  result: [GithubResponseObjectItemsType] | undefined
   errors: []
 }
 
@@ -27,9 +27,10 @@ export const SEARCH_SUCCESS = "SEARCH_SUCCESS"
 export const SEARCH_FAILURE = "SEARCH_FAILURE"
 
 
+export const CLEAR_RESULTS = "CLEAR_RESULTS"
+
 interface SearchAction {
   type: typeof SEARCH,
-  payload: SearchTDO
 }
 
 
@@ -43,5 +44,9 @@ interface SearchFailureAction {
   type: typeof SEARCH_FAILURE
 }
 
+interface ClearSearchResultAction {
+  type: typeof CLEAR_RESULTS
+}
 
-export type SearchActionTypes = SearchAction | SearchSuccessAction | SearchFailureAction;
+
+export type SearchActionTypes = SearchAction | SearchSuccessAction | SearchFailureAction | ClearSearchResultAction;
