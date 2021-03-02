@@ -1,9 +1,14 @@
 import React from 'react'
+import { GithubIssue } from '../../api/GithubTypes';
 
 interface IssueProps {
-  id: string
+  issue: GithubIssue
 }
 
-export const Issue: React.FC<IssueProps> = ({ id }) => {
-  return (<h2>i_{id}</h2>);
+export const Issue: React.FC<IssueProps> = ({ issue }) => {
+  return (
+    <div className="card issue-card">
+      <h2>Issue ID: {issue.id}</h2>
+    </div>
+  );
 }
