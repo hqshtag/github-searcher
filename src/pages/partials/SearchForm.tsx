@@ -5,7 +5,7 @@ import { Select } from "../../components/inputs/Select";
 import { clearResults, setSearchType, thunkSearch } from "../../features/search/actions";
 import { SearchTypes } from "../../features/search/types";
 import { debounce } from 'lodash';
-import { RootState } from "../../features/reducer";
+import { RootState } from "../../features/rootReducer";
 
 
 export const SearchForm: React.FC = () => {

@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
-import rootReducer from "../features/reducer";
+import rootReducer from "../features/rootReducer";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web

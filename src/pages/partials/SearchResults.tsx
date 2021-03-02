@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../features/reducer";
+import { RootState } from "../../features/rootReducer";
 
 interface SearchResultsProps { }
 
