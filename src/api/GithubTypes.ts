@@ -10,7 +10,7 @@ export interface GithubErrorResponse {
   documentation_url: string
 }
 
-interface GithubUser {
+export interface GithubUser {
   login: string
   id: number
   node_id: string
@@ -31,7 +31,7 @@ interface GithubUser {
   score: number
 }
 
-interface GithubRepo {
+export interface GithubRepo {
   id: number
   node_id: string,
   name: string,
@@ -116,7 +116,7 @@ interface GithubLicence {
   node_id: string
 }
 
-interface GithubIssue {
+export interface GithubIssue {
   url: string,
   repository_url: string,
   labels_url: string,
