@@ -1,6 +1,6 @@
 
 export interface GithubResponseObject {
-  total_count: number
+  count: number
   incomplete_results: Boolean
   items: [GithubItemsType]
 }
@@ -9,6 +9,9 @@ export interface GithubErrorResponse {
   message: string,
   documentation_url: string
 }
+
+//the three types will have comm
+export type GithubItemsType = GithubIssue | GithubRepository | GithubUser;
 
 export interface GithubUser {
   login: string
@@ -31,7 +34,7 @@ export interface GithubUser {
   score: number
 }
 
-export interface GithubRepo {
+export interface GithubRepository {
   id: number
   node_id: string,
   name: string,
@@ -146,7 +149,6 @@ export interface GithubIssue {
 }
 
 
-export type GithubItemsType = GithubIssue | GithubRepo | GithubUser;
 
 
 //This is a type guard/check for github response
