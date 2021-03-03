@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,3 +16,108 @@ body {
       monospace;
   }
   
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+  }
+
+  .search-page {
+    .search-header{
+      display: flex;
+      height: 64px;
+      //background-color: red;
+      .title-wrapper{
+        padding-left: 5px;
+        padding-top: 10px;
+        .title {
+          color: #202020;
+        }
+        .subtitle {
+          font-size: 12px;
+          font-weight: 400;
+          color:#747474;
+        }
+      }
+      
+    }
+    .results.infinite-scroll{
+
+      width: 100vw;
+
+     /*  margin-top: 50px;
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap; */
+    }
+  }
+
+  .card {
+    padding: 5px;
+    background: #fff;
+    border-radius: 5px;
+    margin: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+
+  input.keyword-input {
+    padding: 0 3px;
+    font-size: 17px;
+    color: #202020;
+    margin: 5px;
+    height: 42px;
+    width: 250px;
+    border: 1px solid #747474;
+  }
+
+  select.type-input {
+    margin: 5px;
+    padding: 0 2px;
+    height: 43px;
+    width: 120px;
+    border: 1px solid #747474;
+
+  }
+
+  .user-card{
+    width: 260px;
+    height: 180px;
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+      .avatar {
+        height: 64px;
+        width: 64px;
+        padding: 5px;
+        border-radius: 50%;
+      }
+      .name {
+        display:flex;
+        font-size: 24px;
+      }
+    }
+    .details {
+      display: flex;
+      justify-content: space-around;
+      height: 36px;
+      span {
+        align-self: center;
+        padding: 3px 5px;
+        border-radius: 7px;
+        background-color: #202020;
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
+        &:hover {
+          background-color: lighten(#202020, 9);
+        }
+      }
+    }
+  }

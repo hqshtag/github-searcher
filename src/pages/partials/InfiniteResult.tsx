@@ -1,5 +1,6 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import React from "react";
+import { wrap } from "lodash";
 
 interface InfiniteResultProps {
   items: (JSX.Element | undefined)[] | undefined;
@@ -20,6 +21,7 @@ export const InfiniteResult: React.FC<InfiniteResultProps> = ({
 
   return (
     <InfiniteScroll
+      style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       dataLength={count} //This is important field to render the next data
       next={loadNext}
       hasMore={hasMore}

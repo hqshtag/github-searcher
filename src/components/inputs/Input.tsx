@@ -13,7 +13,7 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <input
-      className="input-xr"
+      className="keyword-input"
       type="text"
       value={value}
       onChange={handleChange}

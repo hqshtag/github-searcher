@@ -7,7 +7,7 @@ interface SelectProps {
 
 export const Select: React.FC<SelectProps> = ({ handleChange }) => {
   return (
-    <select onChange={handleChange}>
+    <select className="type-input" onChange={handleChange}>
       {Object.values(SearchTypes).map((e, i) => (
         <option key={i} value={e}>
           {e}

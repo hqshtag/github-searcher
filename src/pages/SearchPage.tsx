@@ -5,6 +5,7 @@ import { RootState } from '../features/rootReducer';
 import { clearResults, loadNext, infiniteSearch, initialSearch } from '../features/search/actions';
 import { SearchTypes } from '../features/search/types';
 import { SearchForm } from './partials/SearchForm'
+import { SearchHeader } from './partials/SearchHeader';
 import { SearchResults } from './partials/SearchResults';
 
 interface SearchPageProps {
@@ -73,6 +74,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({ }) => {
 
   return (
     <div className="page search-page">
+      <SearchHeader />
       <SearchForm keyword={keyword} handleTextChange={handleTextChange} handleSelectChange={handleDropDownChange} />
       <SearchResults loadNext={loadNextResults} />
     </div>);
