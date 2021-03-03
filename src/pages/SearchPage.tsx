@@ -13,7 +13,7 @@ interface SearchPageProps {
 }
 
 export const SearchPage: React.FC<SearchPageProps> = ({ }) => {
-  const [keyword, setKeyword] = useState('hqshtag');
+  const [keyword, setKeyword] = useState('');
   const [type, setType] = useState(SearchTypes.users);
 
 
@@ -71,9 +71,11 @@ export const SearchPage: React.FC<SearchPageProps> = ({ }) => {
 
 
 
+  const isEmtpyKeyword = keyword === "";
+
 
   return (
-    <div className="page search-page">
+    <div className={!isEmtpyKeyword ? "page search-page" : "page search-page midscreen"}>
       <SearchHeader />
       <SearchForm keyword={keyword} handleTextChange={handleTextChange} handleSelectChange={handleDropDownChange} />
       <SearchResults loadNext={loadNextResults} />

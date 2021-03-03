@@ -23,6 +23,12 @@ body {
     align-items: center;
     justify-content: center;
     padding: 50px;
+
+    transition: all 420ms ease-out;
+    &.midscreen{
+      margin-top: 30vh;
+    }
+  
   }
 
   .search-page {
@@ -89,6 +95,7 @@ body {
     border: 1px solid #747474;
 
   }
+
 
   .user-card{
     width: 260px;

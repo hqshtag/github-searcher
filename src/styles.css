@@ -29,6 +29,12 @@ code {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 50px;
+  -webkit-transition: all 420ms ease-out;
+  transition: all 420ms ease-out;
+}
+
+.page.midscreen {
+  margin-top: 30vh;
 }
 
 .search-page .search-header {
