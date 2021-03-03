@@ -6,9 +6,10 @@ import { Repository } from "../../components/cards/Repository";
 import { User } from "../../components/cards/User";
 import { RootState } from "../../features/rootReducer";
 
-interface SearchResultsProps { }
-
-export const SearchResults: React.FC<SearchResultsProps> = ({ }) => {
+interface SearchResultsProps {
+  infiniteScrollRef: React.MutableRefObject<null>
+}
+export const SearchResults: React.FC<SearchResultsProps> = ({ infiniteScrollRef }) => {
   const results = useSelector((state: RootState) => state.search.result);
 
 
@@ -31,7 +32,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({ }) => {
 
 
   return (
-    <div className="results">
+    <div ref={infiniteScrollRef} className="results infinite-scroll">
       <p>fetched <span>{results?.length}  </span></p>
       <Result />
     </div>

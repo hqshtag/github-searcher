@@ -1,7 +1,8 @@
+import { type } from "os";
 import { GithubResponseObject, GithubItemsType } from "../../api/GithubTypes";
 
 export interface SearchTDO {
-  text: string
+  keyword: string
   type: SearchTypes
 }
 
@@ -18,6 +19,17 @@ export interface SearchState {
   errors?: []
 }
 
+
+export const LOADNEXT = "LOADNEXT";
+export const UPDATE_SEARCH_RESULTS = "UPDATE_SEARCH_RESULTS";
+export interface LoadNextAction {
+  type: typeof LOADNEXT
+}
+
+export interface UpdateSearchResultAction {
+  type: typeof UPDATE_SEARCH_RESULTS
+  payload: [GithubItemsType]
+}
 
 
 
@@ -52,4 +64,4 @@ interface ClearSearchResultAction {
 }
 
 
-export type SearchActionTypes = SearchAction | SearchSuccessAction | SearchFailureAction | ClearSearchResultAction;
+export type SearchActionTypes = SearchAction | SearchSuccessAction | SearchFailureAction | ClearSearchResultAction | UpdateSearchResultAction | LoadNextAction;

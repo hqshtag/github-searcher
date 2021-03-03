@@ -1,4 +1,5 @@
-import { CLEAR_RESULTS, SEARCH, SearchActionTypes, SearchState, SEARCH_FAILURE, SEARCH_SUCCESS } from "./types";
+import { act } from "react-dom/test-utils";
+import { CLEAR_RESULTS, LOADNEXT, SEARCH, SearchActionTypes, SearchState, SEARCH_FAILURE, SEARCH_SUCCESS, UPDATE_SEARCH_RESULTS } from "./types";
 
 
 const initialState: SearchState = {
@@ -15,6 +16,18 @@ const reducer = (state = initialState, action: SearchActionTypes): SearchState =
         ...state,
         loading: true
       }
+    case LOADNEXT:
+      return {
+        ...state,
+        loading: true,
+      }
+    case UPDATE_SEARCH_RESULTS:
+      return {
+        ...state,
+        result: action.payload,
+        loading: false
+      }
+
     case SEARCH_SUCCESS: //return data to result array[]
       return {
         ...state,
