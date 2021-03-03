@@ -41,7 +41,7 @@ const reducer = (state = initialState, action: SearchActionTypes): SearchState =
         loading: false
       }
 
-    case SEARCH_SUCCESS: //return data to result array[]
+    case SEARCH_SUCCESS:
       let hasMore = action.payload.total_count > (RESULTS_PER_PAGE * state.page);
       return {
         ...state,

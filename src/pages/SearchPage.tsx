@@ -64,7 +64,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({ }) => {
 
   const page = useSelector((state: RootState) => state.search.page);
   const loadNextResults = () => {
-    dispatch(loadNext());
+    dispatch(loadNext()); //syncin our redux store;
     dispatch(infiniteSearch({ keyword, type, page: page + 1 }))
   }
 
