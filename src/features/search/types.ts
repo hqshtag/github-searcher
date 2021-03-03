@@ -1,9 +1,10 @@
 import { type } from "os";
-import { GithubResponseObject, GithubItemsType } from "../../api/GithubTypes";
+import { GithubResponseObject, GithubItemsType, GithubErrorResponse } from "../../api/GithubTypes";
 
 export interface SearchTDO {
   keyword: string
   type: SearchTypes
+  page: number
 }
 
 export enum SearchTypes {
@@ -15,9 +16,16 @@ export enum SearchTypes {
 
 export interface SearchState {
   loading: Boolean
-  result?: [GithubItemsType]
+  result: SearchResult
+  page: number,
   errors?: []
 }
+
+export interface SearchResult {
+  data: [GithubItemsType] | GithubItemsType[]
+  count: number
+  hasMore: boolean
+} 
 
 
 export const LOADNEXT = "LOADNEXT";
@@ -28,7 +36,7 @@ export interface LoadNextAction {
 
 export interface UpdateSearchResultAction {
   type: typeof UPDATE_SEARCH_RESULTS
-  payload: [GithubItemsType]
+  payload: GithubResponseObject
 }
 
 
@@ -55,7 +63,8 @@ interface SearchSuccessAction {
 }
 
 interface SearchFailureAction {
-  type: typeof SEARCH_FAILURE
+  type: typeof SEARCH_FAILURE,
+  payload: GithubErrorResponse
 }
 
 

@@ -1,5 +1,6 @@
 import { SearchGithubAPI } from "../../api/GithubServices";
 import {
+  GithubErrorResponse,
   GithubItemsType,
   GithubResponseObject,
   ReachedOurRateLimit,
@@ -31,9 +32,10 @@ export const searchSuccess = (res: GithubResponseObject): SearchActionTypes => {
   };
 };
 
-export const searchFailed = (): SearchActionTypes => {
+export const searchFailed = (err: GithubErrorResponse): SearchActionTypes => {
   return {
     type: SEARCH_FAILURE,
+    payload: err
   };
 };
 
@@ -45,9 +47,22 @@ export const initialSearch = (
   dispatch(searchInit());
   const result = await SearchGithubAPI(data);
   if (ReachedOurRateLimit(result)) {
-      dispatch(searchFailed());
-    } else dispatch(searchSuccess(result));
+    dispatch(searchFailed(result));
+  } else dispatch(searchSuccess(result));
   };
+
+
+export const infiniteSearch = (
+  data: SearchTDO
+): ThunkAction<void, SearchState, unknown, SearchActionTypes> => async (
+  dispatch
+) => {
+    const result = await SearchGithubAPI(data);
+    if (ReachedOurRateLimit(result)) {
+      dispatch(searchFailed(result));
+    } else dispatch(updateSearchResults(result));
+  };
+
 
 
 export const loadNext = (): SearchActionTypes => {
@@ -55,7 +70,7 @@ export const loadNext = (): SearchActionTypes => {
     type: LOADNEXT
   }
 }
-export const updateSearchResults = (res: [GithubItemsType]): SearchActionTypes => {
+export const updateSearchResults = (res: GithubResponseObject): SearchActionTypes => {
   return {
     type: UPDATE_SEARCH_RESULTS,
     payload: res

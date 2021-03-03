@@ -1,10 +1,16 @@
 import { act } from "react-dom/test-utils";
+import { RESULTS_PER_PAGE } from "../../api/GithubTypes";
 import { CLEAR_RESULTS, LOADNEXT, SEARCH, SearchActionTypes, SearchState, SEARCH_FAILURE, SEARCH_SUCCESS, UPDATE_SEARCH_RESULTS } from "./types";
 
 
 const initialState: SearchState = {
   loading: false,
-  result: undefined,
+  result: {
+    data: [],
+    count: 0,
+    hasMore: false
+  },
+  page: 1,
   errors: []
 }
 
@@ -17,21 +23,33 @@ const reducer = (state = initialState, action: SearchActionTypes): SearchState =
         loading: true
       }
     case LOADNEXT:
+      let prevPageNumber = state.page;
       return {
         ...state,
+        page: prevPageNumber + 1,
         loading: true,
       }
     case UPDATE_SEARCH_RESULTS:
+      let prevResult = state.result;
+      let prevData = state.result.data;
       return {
         ...state,
-        result: action.payload,
+        result: {
+          ...prevResult,
+          data: [...prevData, ...action.payload.items]
+        },
         loading: false
       }
 
     case SEARCH_SUCCESS: //return data to result array[]
+      let hasMore = action.payload.total_count > (RESULTS_PER_PAGE * state.page);
       return {
         ...state,
-        result: action.payload.items,
+        result: {
+          data: action.payload.items,
+          count: action.payload.total_count,
+          hasMore: hasMore,
+        },
         loading: false
       }
     case SEARCH_FAILURE:
@@ -42,7 +60,12 @@ const reducer = (state = initialState, action: SearchActionTypes): SearchState =
     case CLEAR_RESULTS:
       return {
         ...state,
-        result: undefined,
+        result: {
+          data: [],
+          count: 0,
+          hasMore: false
+        },
+        page: 1
       }
     default:
       return state

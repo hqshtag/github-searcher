@@ -1,7 +1,8 @@
 import { debounce } from 'lodash';
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { clearResults, initialSearch } from '../features/search/actions';
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../features/rootReducer';
+import { clearResults, loadNext, infiniteSearch, initialSearch } from '../features/search/actions';
 import { SearchTypes } from '../features/search/types';
 import { SearchForm } from './partials/SearchForm'
 import { SearchResults } from './partials/SearchResults';
@@ -11,14 +12,14 @@ interface SearchPageProps {
 }
 
 export const SearchPage: React.FC<SearchPageProps> = ({ }) => {
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState('hqshtag');
   const [type, setType] = useState(SearchTypes.users);
 
 
   const dispatch = useDispatch();
   const searchGithub = () => {
     if (keyword.length >= 3) {
-      dispatch(initialSearch({ keyword, type }))
+      dispatch(initialSearch({ keyword, type, page: 1 }));
     } else {
       dispatch(clearResults());
     }
@@ -61,8 +62,11 @@ export const SearchPage: React.FC<SearchPageProps> = ({ }) => {
 
   }
 
-  const [loadMore, setLoadMore] = useState(false);
-  const infiniteScrollRef = useRef(null);
+  const page = useSelector((state: RootState) => state.search.page);
+  const loadNextResults = () => {
+    dispatch(loadNext());
+    dispatch(infiniteSearch({ keyword, type, page: page + 1 }))
+  }
 
 
 
@@ -70,7 +74,6 @@ export const SearchPage: React.FC<SearchPageProps> = ({ }) => {
   return (
     <div className="page search-page">
       <SearchForm keyword={keyword} handleTextChange={handleTextChange} handleSelectChange={handleDropDownChange} />
-
-      <SearchResults infiniteScrollRef={infiniteScrollRef} />
+      <SearchResults loadNext={loadNextResults} />
     </div>);
 }
