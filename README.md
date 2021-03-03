@@ -138,7 +138,7 @@ The UI is simple, you chose whether you are looking for repositories, users or i
     - [x] Add debounce. Make the API calls only if the user has typed 3 or more characters.
     - [x] If the user changes the "Entity type" value in the dropdown and user has 3 or more characters in the input already, it should refresh the results.
     - [X] If the user clears the input or types less than three characters, clear the results and show the empty screen.
-    - [ ] The user can scroll down to see more results ( Infinite scrolling ) until the results are done.
+    - [X] The user can scroll down to see more results ( Infinite scrolling ) until the results are done.
     - [ ] Responsive
 - **Criteria**
     - [x] Cleanliness of the code

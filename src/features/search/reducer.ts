@@ -1,10 +1,16 @@
-import { CLEAR_RESULTS, SEARCH, SearchActionTypes, SearchState, SearchTypes, SEARCH_FAILURE, SEARCH_SUCCESS, SET_SEARCH_TYPE } from "./types";
+import { act } from "react-dom/test-utils";
+import { RESULTS_PER_PAGE } from "../../api/GithubTypes";
+import { CLEAR_RESULTS, LOADNEXT, SEARCH, SearchActionTypes, SearchState, SEARCH_FAILURE, SEARCH_SUCCESS, UPDATE_SEARCH_RESULTS } from "./types";
 
 
 const initialState: SearchState = {
-  type: SearchTypes.users,
   loading: false,
-  result: undefined,
+  result: {
+    data: [],
+    count: 0,
+    hasMore: false
+  },
+  page: 1,
   errors: []
 }
 
@@ -16,10 +22,34 @@ const reducer = (state = initialState, action: SearchActionTypes): SearchState =
         ...state,
         loading: true
       }
-    case SEARCH_SUCCESS: //return data to result array[]
+    case LOADNEXT:
+      let prevPageNumber = state.page;
       return {
         ...state,
-        result: action.payload.items,
+        page: prevPageNumber + 1,
+        loading: true,
+      }
+    case UPDATE_SEARCH_RESULTS:
+      let prevResult = state.result;
+      let prevData = state.result.data;
+      return {
+        ...state,
+        result: {
+          ...prevResult,
+          data: [...prevData, ...action.payload.items]
+        },
+        loading: false
+      }
+
+    case SEARCH_SUCCESS:
+      let hasMore = action.payload.total_count > (RESULTS_PER_PAGE * state.page);
+      return {
+        ...state,
+        result: {
+          data: action.payload.items,
+          count: action.payload.total_count,
+          hasMore: hasMore,
+        },
         loading: false
       }
     case SEARCH_FAILURE:
@@ -27,15 +57,15 @@ const reducer = (state = initialState, action: SearchActionTypes): SearchState =
         ...state,
         loading: false
       }
-    case SET_SEARCH_TYPE:
-      return {
-        ...state,
-        type: action.payload
-      }
     case CLEAR_RESULTS:
       return {
         ...state,
-        result: undefined,
+        result: {
+          data: [],
+          count: 0,
+          hasMore: false
+        },
+        page: 1
       }
     default:
       return state

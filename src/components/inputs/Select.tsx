@@ -6,14 +6,13 @@ interface SelectProps {
 }
 
 export const Select: React.FC<SelectProps> = ({ handleChange }) => {
-
   return (
-    <>
-      <select onChange={handleChange}>
-        {Object.values(SearchTypes).map((e, i) => (
-          <option key={i} value={e}>{e}</option>
-        ))}
-      </select>{" "}
-    </>
+    <select onChange={handleChange}>
+      {Object.values(SearchTypes).map((e, i) => (
+        <option key={i} value={e}>
+          {e}
+        </option>
+      ))}
+    </select>
   );
 };

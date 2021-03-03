@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 interface InputProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -6,7 +6,11 @@ interface InputProps {
   placeholder: string;
 }
 
-export const Input: React.FC<InputProps> = ({ value, handleChange, placeholder }) => {
+export const Input: React.FC<InputProps> = ({
+  value,
+  handleChange,
+  placeholder,
+}) => {
   return (
     <input
       className="input-xr"
@@ -16,4 +20,4 @@ export const Input: React.FC<InputProps> = ({ value, handleChange, placeholder }
       placeholder={placeholder}
     />
   );
-}
+};

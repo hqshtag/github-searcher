@@ -1,8 +1,10 @@
-import { GithubResponseObject, GithubItemsType } from "../../api/GithubTypes";
+import { type } from "os";
+import { GithubResponseObject, GithubItemsType, GithubErrorResponse } from "../../api/GithubTypes";
 
 export interface SearchTDO {
-  text: string
+  keyword: string
   type: SearchTypes
+  page: number
 }
 
 export enum SearchTypes {
@@ -13,12 +15,29 @@ export enum SearchTypes {
 
 
 export interface SearchState {
-  type: SearchTypes
   loading: Boolean
-  result?: [GithubItemsType]
+  result: SearchResult
+  page: number,
   errors?: []
 }
 
+export interface SearchResult {
+  data: [GithubItemsType] | GithubItemsType[]
+  count: number
+  hasMore: boolean
+} 
+
+
+export const LOADNEXT = "LOADNEXT";
+export const UPDATE_SEARCH_RESULTS = "UPDATE_SEARCH_RESULTS";
+export interface LoadNextAction {
+  type: typeof LOADNEXT
+}
+
+export interface UpdateSearchResultAction {
+  type: typeof UPDATE_SEARCH_RESULTS
+  payload: GithubResponseObject
+}
 
 
 
@@ -31,7 +50,6 @@ export const SEARCH_FAILURE = "SEARCH_FAILURE"
 export const CLEAR_RESULTS = "CLEAR_RESULTS"
 
 
-export const SET_SEARCH_TYPE = "SET_SEARCH_TYPE"
 
 interface SearchAction {
   type: typeof SEARCH,
@@ -45,17 +63,14 @@ interface SearchSuccessAction {
 }
 
 interface SearchFailureAction {
-  type: typeof SEARCH_FAILURE
+  type: typeof SEARCH_FAILURE,
+  payload: GithubErrorResponse
 }
 
-interface SetSearchTypeAction {
-  type: typeof SET_SEARCH_TYPE
-  payload: SearchTypes
-}
 
 interface ClearSearchResultAction {
   type: typeof CLEAR_RESULTS
 }
 
 
-export type SearchActionTypes = SearchAction | SearchSuccessAction | SearchFailureAction | SetSearchTypeAction | ClearSearchResultAction;
+export type SearchActionTypes = SearchAction | SearchSuccessAction | SearchFailureAction | ClearSearchResultAction | UpdateSearchResultAction | LoadNextAction;

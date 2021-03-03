@@ -1,5 +1,7 @@
+export const RESULTS_PER_PAGE = 42;
+
 export interface GithubResponseObject {
-  items_count: number;
+  total_count: number;
   incomplete_results: Boolean;
   items: [GithubItemsType];
 }
