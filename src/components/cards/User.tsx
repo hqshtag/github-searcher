@@ -7,7 +7,7 @@ interface UserProps {
 }
 
 export const User: React.FC<UserProps> = ({ user }) => {
-  const username_max_length: number = "mohamed wajih".length;
+  const username_max_length: number = 13;
   return (
     <div className="card user-card">
       <div className="header">

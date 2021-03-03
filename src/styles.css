@@ -70,6 +70,12 @@ code {
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
+.card .timestamps p {
+  font-weight: 300;
+  font-size: 12px;
+  color: #747474;
+}
+
 input.keyword-input {
   padding: 0 3px;
   font-size: 17px;
@@ -145,5 +151,127 @@ select.type-input {
 
 .user-card .details span:hover {
   background-color: #373737;
+}
+
+.repository-card {
+  width: 300px;
+  height: 180px;
+}
+
+.repository-card .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.repository-card .header .avatar {
+  padding: 3px 9px;
+  height: 42px;
+  width: 42px;
+}
+
+.repository-card .header .name {
+  font-weight: 500;
+}
+
+.repository-card .header .stars {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.repository-card .details {
+  margin: 2px;
+}
+
+.repository-card .details .description {
+  font-size: 14px;
+}
+
+.repository-card .links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.repository-card .links span {
+  margin: 5px;
+  width: 81px;
+  height: 24px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #4e4c4c;
+}
+
+.repository-card .links span a {
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+}
+
+.repository-card .links span:hover {
+  background-color: #656363;
+}
+
+.issue-card {
+  text-align: center;
+  width: 240px;
+  height: 160px;
+  padding: 10px;
+}
+
+.issue-card label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.issue-card .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.issue-card .header .id {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #a0a0a0;
+}
+
+.issue-card .header label[for="title"] .title {
+  padding: 1px 3px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.issue-card .header label[for="user"] .username {
+  padding: 0 5px;
+}
+
+.issue-card .header label[for="user"] .username a {
+  text-decoration: none;
+  color: #4e4c4c;
+}
+
+.issue-card .details {
+  margin: 5px;
+}
+
+.issue-card .details .comments, .issue-card .details .state {
+  padding: 1px 3px;
+}
+
+.issue-card .timestamps {
+  margin-top: 10px;
 }
 /*# sourceMappingURL=styles.css.map */
