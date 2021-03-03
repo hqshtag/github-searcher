@@ -2,11 +2,8 @@ import React, { useEffect } from 'react'
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { SearchPage } from '../pages/SearchPage';
 
-interface AppRouterProps {
 
-}
-
-export const AppRouter: React.FC<AppRouterProps> = ({ }) => {
+export const AppRouter: React.FC = ({ }) => {
 
     const knownPaths = [
         "/search",
