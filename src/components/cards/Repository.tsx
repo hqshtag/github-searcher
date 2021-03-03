@@ -1,5 +1,5 @@
-import React from 'react'
-import { GithubRepository } from '../../api/GithubTypes';
+import React from "react";
+import { GithubRepository } from "../../api/GithubTypes";
 
 interface RepositoryProps {
   repository: GithubRepository;
@@ -11,4 +11,4 @@ export const Repository: React.FC<RepositoryProps> = ({ repository }) => {
       <h2>Name: {repository.name}</h2>
     </div>
   );
-}
+};

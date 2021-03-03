@@ -1,8 +1,8 @@
-import React from 'react'
-import { GithubIssue } from '../../api/GithubTypes';
+import React from "react";
+import { GithubIssue } from "../../api/GithubTypes";
 
 interface IssueProps {
-  issue: GithubIssue
+  issue: GithubIssue;
 }
 
 export const Issue: React.FC<IssueProps> = ({ issue }) => {
@@ -11,4 +11,4 @@ export const Issue: React.FC<IssueProps> = ({ issue }) => {
       <h2>Issue ID: {issue.id}</h2>
     </div>
   );
-}
+};
