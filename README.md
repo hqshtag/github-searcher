@@ -131,7 +131,7 @@ The UI is simple, you chose whether you are looking for repositories, users or i
     - [x] React.js
     - [x] TypeScript
     - [x] Redux and redux-persist
-    - [ ] React Router
+    - [X] React Router
     - [ ] Vanilla CSS, Sass, Styled Components or any other CSS-in-JS.
 - **Requierements**
     - [x] Search Github API for Repos/Users/issues
