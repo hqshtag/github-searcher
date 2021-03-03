@@ -25,10 +25,13 @@ export const InfiniteResult: React.FC<InfiniteResultProps> = ({
       hasMore={hasMore}
       loader={<h4>Loading...</h4>}
       endMessage={
+        <div className="scroll-end">
+          <hr />
         <p style={{ textAlign: "center" }}>
-          <hr className="scroll-end" />
-          loaded {count} result{count > 1 && 's'}
-        </p>
+
+            finished loading {count} result{count > 1 && 's'}
+          </p>
+        </div>
       }
       // below props only if you need pull down functionality
       refreshFunction={refreshPage}
