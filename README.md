@@ -43,6 +43,13 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#tasks">Tasks</a></li>
+    <li> <a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#structure">Structure</a></li>
+                        <li><a href="#ideas">Ideas</a></li>
+        <li><a href="#final-thoughts">Final Thoughts</a></li>
+      </ul></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
 
