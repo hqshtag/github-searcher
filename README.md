@@ -17,8 +17,9 @@
   <p align="center">
    A simple GitHub repository search application.
     <br />
-   
-   
+   A Technical test by <a href="https://www.tradeling.com">tradeling</a>
+    <br />
+    Status: <span style="color: #FF3232">unfinished</span>
 </p>
 
 
@@ -31,7 +32,6 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#technologies">Technologies</a></li>
-        <li><a href="#app-structure">App structure</li>
       </ul>
     </li>
     <li>
@@ -42,7 +42,14 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#tasks">Tasks</a></li>
+    <li> <a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#structure">Structure</a></li>
+                        <li><a href="#ideas">Ideas</a></li>
+        <li><a href="#final-thoughts">Final Thoughts</a></li>
+      </ul></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
 
@@ -65,37 +72,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [React Router](https://github.com/ReactTraining/react-router).
 - [SaSS](https://sass-lang.com/).
 
-### App Structure
-```
-/src
-  ├── /api
-  |      ├── GithubServices.ts
-  |      ├── GithubTypes.ts
-  ├── /app
-  |      ├── App.tsx
-  |      ├── AppRouter.tsx
-  |      ├── store.ts
-  |      └── styles.css
-  ├── /components
-  |      ├── /cards
-  |      |      ├── IssueCard.tsx
-  |      |      ├── RepoCard.tsx
-  |      |      └── UserCard.tsx
-  |      └── /inputs
-  |              ├── Input.tsx
-  |              └── Select.tsx
-  ├── /features   
-  |      ├─ /search
-  |      |        ├── actions.ts
-  |      |        ├── types.ts
-  |      |        └── reducer.ts
-  |      └──rootReducer.ts
-  └── /pages
-        ├── /partials
-        |       ├── SearchForm.tsx
-        |       └── SearchResults.tsx
-        └── SearchPage.tsx
-```
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -148,30 +125,80 @@ The UI is simple, you chose whether you are looking for repositories, users or i
 
 
 
-<!-- ROADMAP -->
-## Features Roadmap:
-- [x] Routing with React-Router
-- [ ] User Identity
-  - [ ] External providers (Google, Github, Bitbucket)
-  - [ ] Registration / Authentication
-- [x] Cross-cutting Application Services
-  - [x] Local Storage
-  - [x] Client Logger
-  - [x] Toasts
-  - [ ] Analytics
-- [x] Feature Folders
-  - [x] `/articles` - Articles listing with CRUD Operations
-  - [ ] `/realtime-monitoring` - Realtime monitoring of connected users using Websockets
-- [x] REST API Integration (API Client)
-- [ ] WebSockets Integration
-- [ ] Serverless Lambda Functions (Netlify Functions)
-- [ ] Utilities (HOC, Hooks, Media Queries...)
-- [ ] Typesafe Styling/Theming with CSSinJS (`Emotion`)
-- [ ] ...
+<!-- TASKs -->
+## Tasks:
+- **Technologies**
+    - [x] React.js
+    - [x] TypeScript
+    - [x] Redux and redux-persist
+    - [ ] React Router
+    - [ ] Vanilla CSS, Sass, Styled Components or any other CSS-in-JS.
+- **Requierements**
+    - [x] Search Github API for Repos/Users/issues
+    - [x] Add debounce. Make the API calls only if the user has typed 3 or more characters.
+    - [x] If the user changes the "Entity type" value in the dropdown and user has 3 or more characters in the input already, it should refresh the results.
+    - [X] If the user clears the input or types less than three characters, clear the results and show the empty screen.
+    - [X] The user can scroll down to see more results ( Infinite scrolling ) until the results are done.
+    - [ ] Responsive
+- **Criteria**
+    - [x] Cleanliness of the code
+    - [x] Use modern ES6+ syntax, async/await, elegant & readable code
+    - [x] Typescript definitions, types, interfaces.
+    - [x] README file explaining my high level solution
+    - [ ] All the edgecases have been handled
+    - [ ] Tests.
+
+
+## Solution
+### Abstract
+When I first got this technical test I thought about the solution for about 3 days, imagined how my application would work (the data flow, the structure..), I searched some similar projects on github and tested them.
 
 
 
+### Structure
+>I aimed to build an optimal solution as if this was a real product, I mainly focused on building a scalable app structure.
+```
+/src
+  ├── /api
+  |      ├── GithubServices.ts
+  |      ├── GithubTypes.ts
+  ├── /app
+  |      ├── App.tsx
+  |      ├── AppRouter.tsx
+  |      ├── store.ts
+  |      └── styles.css
+  ├── /components
+  |      ├── /cards
+  |      |      ├── IssueCard.tsx
+  |      |      ├── RepoCard.tsx
+  |      |      └── UserCard.tsx
+  |      └── /inputs
+  |              ├── Input.tsx
+  |              └── Select.tsx
+  ├── /features   
+  |      ├─ /search
+  |      |        ├── actions.ts
+  |      |        ├── types.ts
+  |      |        └── reducer.ts
+  |      └──rootReducer.ts
+  └── /pages
+        ├── /partials
+        |       ├── SearchForm.tsx
+        |       └── SearchResults.tsx
+        └── SearchPage.tsx
+```
+### Ideas
+- I'm familiar with using redux/toolkit and I know how efficent it is compared to react-redux but I thougt I use the later  for the test since you didn't specified toolkit in the requirements.
+- I know about Octokit, but I created my own API service, Octokit would be optimal if we had a filter and sort feature in our app. 
+- If I had more time, or if this was a bigger app, the infinitescroll would stand alone as a unqiue feature not inside the search.
 
+### Issues
+>These are the issue that took me long enough to solve them.
+- Some Types issues due to the fact that I'm not that experienced with Typescript as I'm with Javascript. But I managed.
+- Infinite Scroll: Never have done that before but hey, first time for everything =)
+
+### Final Thoughts
+It's a very good test, I enjoyed working on the solution trying to perfect everybit of it. Thank you.
 
 <!-- LICENSE -->
 ## License
@@ -183,7 +210,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - Wajih Tagourty - wajih.tagourty@gmail.com
+ Wajih Tagourty - wajih.tagourty@gmail.com
 
 Project Link: [https://github.com/hqshtag/github-searcher](https://github.com/hqshtag/week-spenx)
 
