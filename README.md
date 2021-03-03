@@ -19,7 +19,7 @@
     <br />
    A Technical test by <a href="https://www.tradeling.com">tradeling</a>
     <br />
-    Status: <span style="color: #FF3232">unfinished</span>
+    Status: <span style="color: #00ff00">complete</span>
 </p>
 
 
@@ -132,14 +132,14 @@ The UI is simple, you chose whether you are looking for repositories, users or i
     - [x] TypeScript
     - [x] Redux and redux-persist
     - [X] React Router
-    - [ ] Vanilla CSS, Sass, Styled Components or any other CSS-in-JS.
+    - [x] Vanilla CSS, Sass, Styled Components or any other CSS-in-JS.
 - **Requierements**
     - [x] Search Github API for Repos/Users/issues
     - [x] Add debounce. Make the API calls only if the user has typed 3 or more characters.
     - [x] If the user changes the "Entity type" value in the dropdown and user has 3 or more characters in the input already, it should refresh the results.
     - [X] If the user clears the input or types less than three characters, clear the results and show the empty screen.
     - [X] The user can scroll down to see more results ( Infinite scrolling ) until the results are done.
-    - [ ] Responsive
+    - [x] Responsive
 - **Criteria**
     - [x] Cleanliness of the code
     - [x] Use modern ES6+ syntax, async/await, elegant & readable code
@@ -191,6 +191,7 @@ When I first got this technical test I thought about the solution for about 3 da
 - I'm familiar with using redux/toolkit and I know how efficent it is compared to react-redux but I thougt I use the later  for the test since you didn't specified toolkit in the requirements.
 - I know about Octokit, but I created my own API service, Octokit would be optimal if we had a filter and sort feature in our app. 
 - If I had more time, or if this was a bigger app, the infinitescroll would stand alone as a unqiue feature not inside the search.
+- In the production world, I surely will destructure my styles file.
 
 ### Issues
 >These are the issue that took me long enough to solve them.
