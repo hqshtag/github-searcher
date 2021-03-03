@@ -1,8 +1,7 @@
-import { CLEAR_RESULTS, SEARCH, SearchActionTypes, SearchState, SearchTypes, SEARCH_FAILURE, SEARCH_SUCCESS, SET_SEARCH_TYPE } from "./types";
+import { CLEAR_RESULTS, SEARCH, SearchActionTypes, SearchState, SEARCH_FAILURE, SEARCH_SUCCESS } from "./types";
 
 
 const initialState: SearchState = {
-  type: SearchTypes.users,
   loading: false,
   result: undefined,
   errors: []
@@ -26,11 +25,6 @@ const reducer = (state = initialState, action: SearchActionTypes): SearchState =
       return {
         ...state,
         loading: false
-      }
-    case SET_SEARCH_TYPE:
-      return {
-        ...state,
-        type: action.payload
       }
     case CLEAR_RESULTS:
       return {

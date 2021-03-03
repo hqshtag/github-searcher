@@ -9,10 +9,8 @@ import {
   SearchActionTypes,
   SearchState,
   SearchTDO,
-  SearchTypes,
   SEARCH_FAILURE,
   SEARCH_SUCCESS,
-  SET_SEARCH_TYPE,
 } from "./types";
 import { ThunkAction } from "redux-thunk";
 
@@ -22,12 +20,7 @@ export const searchInit = (): SearchActionTypes => {
   };
 };
 
-export const setSearchType = (type: SearchTypes): SearchActionTypes => {
-  return {
-    type: SET_SEARCH_TYPE,
-    payload: type,
-  };
-};
+
 
 export const searchSuccess = (res: GithubResponseObject): SearchActionTypes => {
   return {

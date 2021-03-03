@@ -2,10 +2,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Input } from "../../components/inputs/Input";
 import { Select } from "../../components/inputs/Select";
-import { clearResults, setSearchType, thunkSearch } from "../../features/search/actions";
+import { clearResults, thunkSearch } from "../../features/search/actions";
 import { SearchTypes } from "../../features/search/types";
 import { debounce } from 'lodash';
-import { RootState } from "../../features/rootReducer";
 
 
 /* interface SearchFormProps {
@@ -16,10 +15,8 @@ import { RootState } from "../../features/rootReducer";
 } */
 
 export const SearchForm: React.FC = () => {
-  const defaultSearchType = useSelector((state: RootState) => state.search.type);
-
   const [searchText, setSearchText] = useState('');
-  const [type, setType] = useState(defaultSearchType);
+  const [type, setType] = useState(SearchTypes.users);
 
   const dispatch = useDispatch();
   const searchGithub = () => {
@@ -61,9 +58,6 @@ export const SearchForm: React.FC = () => {
       let typeValue = Object.values(SearchTypes).filter(e => e === value)[0];
       //typeValue is of type SearchTypes :)
       setType(typeValue);
-      //update our type in the store
-      dispatch(setSearchType(typeValue));
-
     } 
 
   }

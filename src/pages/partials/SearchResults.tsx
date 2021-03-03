@@ -5,12 +5,10 @@ import { Issue } from "../../components/cards/Issue";
 import { Repository } from "../../components/cards/Repository";
 import { User } from "../../components/cards/User";
 import { RootState } from "../../features/rootReducer";
-import { SearchTypes } from "../../features/search/types";
 
 interface SearchResultsProps { }
 
 export const SearchResults: React.FC<SearchResultsProps> = ({ }) => {
-  const resultsType = useSelector((state: RootState) => state.search.type);
   const results = useSelector((state: RootState) => state.search.result);
 
 
@@ -34,7 +32,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({ }) => {
 
   return (
     <div className="results">
-      <p>fetched <span>{results?.length} {resultsType}  </span></p>
+      <p>fetched <span>{results?.length}  </span></p>
       <Result />
     </div>
   );
