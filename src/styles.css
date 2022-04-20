@@ -5,13 +5,13 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .page {
@@ -41,7 +41,12 @@ code {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 64px;
+  width: 272px;
+  margin: 24px;
 }
 
 .search-page .search-header .title-wrapper {
@@ -82,22 +87,34 @@ code {
   color: #747474;
 }
 
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
 input.keyword-input {
-  padding: 0 3px;
+  padding: 0 16px;
   font-size: 17px;
   color: #202020;
   margin: 5px;
   height: 42px;
   width: 250px;
   border: 1px solid #747474;
+  border-radius: 4px;
 }
 
 select.type-input {
   margin: 5px;
-  padding: 0 2px;
+  padding: 0 8px;
   height: 43px;
   width: 120px;
   border: 1px solid #747474;
+  border-radius: 4px;
 }
 
 .user-card {
