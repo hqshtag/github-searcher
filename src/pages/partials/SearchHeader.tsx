@@ -1,8 +1,7 @@
-import { ReactComponent } from '*.svg'
-import React from 'react'
+import React from "react";
 import logo from "../../logo.png";
 
-export const SearchHeader: React.FC = ({ }) => {
+export const SearchHeader: React.FC = () => {
   return (
     <div className="search-header">
       <img src={logo} alt="github logo" />
@@ -12,4 +11,4 @@ export const SearchHeader: React.FC = ({ }) => {
       </div>
     </div>
   );
-}
+};

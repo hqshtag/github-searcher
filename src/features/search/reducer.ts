@@ -1,34 +1,43 @@
-import { act } from "react-dom/test-utils";
 import { RESULTS_PER_PAGE } from "../../api/GithubTypes";
-import { CLEAR_RESULTS, LOADNEXT, SEARCH, SearchActionTypes, SearchState, SEARCH_FAILURE, SEARCH_SUCCESS, UPDATE_SEARCH_RESULTS } from "./types";
-
+import {
+  CLEAR_RESULTS,
+  LOADNEXT,
+  SEARCH,
+  SearchActionTypes,
+  SearchState,
+  SEARCH_FAILURE,
+  SEARCH_SUCCESS,
+  UPDATE_SEARCH_RESULTS,
+} from "./types";
 
 const initialState: SearchState = {
   loading: false,
   result: {
     data: [],
     count: 0,
-    hasMore: false
+    hasMore: false,
   },
   page: 1,
-  errors: []
-}
+  errors: [],
+};
 
-
-const reducer = (state = initialState, action: SearchActionTypes): SearchState => {
+const reducer = (
+  state = initialState,
+  action: SearchActionTypes
+): SearchState => {
   switch (action.type) {
     case SEARCH:
       return {
         ...state,
-        loading: true
-      }
+        loading: true,
+      };
     case LOADNEXT:
       let prevPageNumber = state.page;
       return {
         ...state,
         page: prevPageNumber + 1,
         loading: true,
-      }
+      };
     case UPDATE_SEARCH_RESULTS:
       let prevResult = state.result;
       let prevData = state.result.data;
@@ -36,13 +45,13 @@ const reducer = (state = initialState, action: SearchActionTypes): SearchState =
         ...state,
         result: {
           ...prevResult,
-          data: [...prevData, ...action.payload.items]
+          data: [...prevData, ...action.payload.items],
         },
-        loading: false
-      }
+        loading: false,
+      };
 
     case SEARCH_SUCCESS:
-      let hasMore = action.payload.total_count > (RESULTS_PER_PAGE * state.page);
+      let hasMore = action.payload.total_count > RESULTS_PER_PAGE * state.page;
       return {
         ...state,
         result: {
@@ -50,26 +59,26 @@ const reducer = (state = initialState, action: SearchActionTypes): SearchState =
           count: action.payload.total_count,
           hasMore: hasMore,
         },
-        loading: false
-      }
+        loading: false,
+      };
     case SEARCH_FAILURE:
       return {
         ...state,
-        loading: false
-      }
+        loading: false,
+      };
     case CLEAR_RESULTS:
       return {
         ...state,
         result: {
           data: [],
           count: 0,
-          hasMore: false
+          hasMore: false,
         },
-        page: 1
-      }
+        page: 1,
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default reducer;

@@ -1,7 +1,6 @@
 import { SearchGithubAPI } from "../../api/GithubServices";
 import {
   GithubErrorResponse,
-  GithubItemsType,
   GithubResponseObject,
   ReachedOurRateLimit,
 } from "../../api/GithubTypes";
@@ -24,7 +23,6 @@ export const searchInit = (): SearchActionTypes => {
   };
 };
 
-
 export const searchSuccess = (res: GithubResponseObject): SearchActionTypes => {
   return {
     type: SEARCH_SUCCESS,
@@ -35,48 +33,46 @@ export const searchSuccess = (res: GithubResponseObject): SearchActionTypes => {
 export const searchFailed = (err: GithubErrorResponse): SearchActionTypes => {
   return {
     type: SEARCH_FAILURE,
-    payload: err
+    payload: err,
   };
 };
 
-export const initialSearch = (
-  data: SearchTDO
-): ThunkAction<void, SearchState, unknown, SearchActionTypes> => async (
-  dispatch
-) => {
-  dispatch(searchInit());
-  const result = await SearchGithubAPI(data);
-  if (ReachedOurRateLimit(result)) {
-    dispatch(searchFailed(result));
-  } else dispatch(searchSuccess(result));
+export const initialSearch =
+  (
+    data: SearchTDO
+  ): ThunkAction<void, SearchState, unknown, SearchActionTypes> =>
+  async (dispatch) => {
+    dispatch(searchInit());
+    const result = await SearchGithubAPI(data);
+    if (ReachedOurRateLimit(result)) {
+      dispatch(searchFailed(result));
+    } else dispatch(searchSuccess(result));
   };
 
-
-export const infiniteSearch = (
-  data: SearchTDO
-): ThunkAction<void, SearchState, unknown, SearchActionTypes> => async (
-  dispatch
-) => {
+export const infiniteSearch =
+  (
+    data: SearchTDO
+  ): ThunkAction<void, SearchState, unknown, SearchActionTypes> =>
+  async (dispatch) => {
     const result = await SearchGithubAPI(data);
     if (ReachedOurRateLimit(result)) {
       dispatch(searchFailed(result));
     } else dispatch(updateSearchResults(result));
   };
 
-
-
 export const loadNext = (): SearchActionTypes => {
   return {
-    type: LOADNEXT
-  }
-}
-export const updateSearchResults = (res: GithubResponseObject): SearchActionTypes => {
+    type: LOADNEXT,
+  };
+};
+export const updateSearchResults = (
+  res: GithubResponseObject
+): SearchActionTypes => {
   return {
     type: UPDATE_SEARCH_RESULTS,
-    payload: res
-  }
-}
-
+    payload: res,
+  };
+};
 
 export const clearResults = (): SearchActionTypes => {
   return {

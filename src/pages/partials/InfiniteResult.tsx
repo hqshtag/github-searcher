@@ -1,6 +1,5 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import React from "react";
-import { wrap } from "lodash";
 
 interface InfiniteResultProps {
   items: (JSX.Element | undefined)[] | undefined;
@@ -26,12 +25,10 @@ export const InfiniteResult: React.FC<InfiniteResultProps> = ({
       next={loadNext}
       hasMore={hasMore}
       loader={<h4>Loading...</h4>}
-
       // below props only if you need pull down functionality
       refreshFunction={refreshPage}
       pullDownToRefresh
       pullDownToRefreshThreshold={50}
-
     >
       {items}
     </InfiniteScroll>
